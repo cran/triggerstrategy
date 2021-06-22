@@ -1,22 +1,22 @@
 # Rfun_gbounds
 # 2020-03-04
 # 2020-03-21 Add original POC and OBF
+# 2021-06-21 Programming HSD directly instead of using R package gsDesign
 #
 #' @name gbounds
 #' @title Critical boundary in group sequential trials
-#' @description This function computes the critical boundaries and the error spent until each stage in group sequential trials 
+#' @description This function computes the critical boundaries and the error spent until each stage in group sequential trials
 #' @param t a vector of information times
 #' @param iuse a number of the type of the error spending function, from -2, -1, 1, 2, 3, 4
 #' @param alpha a number of type I error rate
 #' @param phi a parameter for the power family or the HSD gamma family
 #' @return a list of two vectors: \code{bd} critical boundaries, \code{er} error spent until each stage
 #' @export
-#' @import stats 
-#' @import ldbounds 
-#' @import gsDesign
+#' @import stats
+#' @import ldbounds
 #' @author Jiangtao Gou
-#' @details If the original Pocock is implemented, we specify \code{iuse=-2}. If the original OBrien-Flemming is implemented, we specify \code{iuse=-1}. 
-#' @examples 
+#' @details If the original Pocock is implemented, we specify \code{iuse=-2}. If the original OBrien-Flemming is implemented, we specify \code{iuse=-1}.
+#' @examples
 #' t<-c(0.5,0.8,1)
 #' iuse <- 4
 #' gbounds(t=t, iuse=iuse)
@@ -38,8 +38,11 @@ gbounds <- function(t, iuse=1, alpha=0.05, phi=rep(1,length(alpha))) {
     result <- list(bd=bd, er=er)
     return(result)
   } else if (iuse == 4) {
-    sfresult <- gsDesign::sfHSD(alpha=alpha, t=t, param=phi)
-    er <- sfresult$spend
+    # sfresult <- gsDesign::sfHSD(alpha=alpha, t=t, param=phi)
+    # er <- sfresult$spend
+    #
+    er <- if (phi == 0) t * alpha else alpha * (1. - exp(-t * phi)) / (1 - exp(-phi))
+    #
     bd <- alpha2boundary(alphas=er, t=t)
     result <- list(bd=bd, er=er)
     return(result)
