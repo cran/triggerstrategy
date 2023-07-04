@@ -72,7 +72,8 @@
 #'     seed = seed)
 #' print(result)
 #' @references
-#' Gou, J. (2021). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. Technical report.
+#'  Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+#'  Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
 #
 solveAlphaXsampleSizeGA <- function(alpha, beta0, beta1, effsz0, effsz1, szratio=1, t0=1, t1=1, tc0=t0, tc1=t1, rho=0, iuse0=1, iuse1=1, phi0=rep(1,length(alpha)), phi1=rep(1,length(alpha)), usingRhoForBoundary=FALSE, method="trigger", lower=c(1,1e-4), upper=c(1e4,alpha-1e-4), maxiter=20, run=200, seed=1949) {
   #

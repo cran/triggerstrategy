@@ -80,24 +80,27 @@ tc1 <- c(1,2,3)
 t0 <- c(0.6,1)
 t1 <- c(0.5,0.9,1)
 rho <- 0
-effsz0 <- 0.33 
+effsz0 <- 0.33
 effsz1 <- 0.30
 groupsize=226
 szratio=1
 method="bonferroni"
 method = "holm"
 method="maurer-bretz"
-psPwRbhmb(alpha=alpha, alpha0=alpha0, 
-    t0=t0, t1=t1, tc0=tc0, tc1=tc1, 
-    rho=rho, iuse0=1, iuse1=iuse1, 
-    phi0=phi0, phi1=phi1, 
-    usingRhoForBoundary=usingRhoForBoundary, 
-    groupsize=groupsize, szratio=szratio, 
-    effsz0=effsz0, effsz1=effsz1, 
-    method=method) 
+psPwRbhmb(alpha=alpha, alpha0=alpha0,
+    t0=t0, t1=t1, tc0=tc0, tc1=tc1,
+    rho=rho, iuse0=1, iuse1=iuse1,
+    phi0=phi0, phi1=phi1,
+    usingRhoForBoundary=usingRhoForBoundary,
+    groupsize=groupsize, szratio=szratio,
+    effsz0=effsz0, effsz1=effsz1,
+    method=method)
 }
 \references{
-Gou, J. (2021). Trigger strategy in repeated tests on multiple hypotheses. Technical report.
+Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
+Tamhane, A. C., Gou, J., Jennison, C., Mehta, C. R., and Curto, T. (2018). A gatekeeping procedure to test a primary and a secondary endpoint in a group sequential design with multiple interim looks. \emph{Biometrics}, 74(1), 40-48.
+Tamhane, A. C., & Gou, J. (2022). Chapter 2 - Multiple test procedures based on p-values. In X. Cui, T. Dickhaus, Y. Ding, & J. C. Hsu (Eds.), \emph{Handbook of multiple comparisons} (Vol. 45, pp. 11–34).
 }
 \author{
 Jiangtao Gou

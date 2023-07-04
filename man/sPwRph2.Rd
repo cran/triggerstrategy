@@ -45,16 +45,20 @@ tc1 <- c(6,12,18,24)
 t0 <- c(0.3,0.6,0.9,1)
 t1 <- (1:4)/4
 rho <- 0
-cvecList0 <- gbounds(t=t0, iuse=iuse0, 
+cvecList0 <- gbounds(t=t0, iuse=iuse0,
     alpha=alpha0, phi=phi0)
 cvec0 <- cvecList0$bd
-cvecList1 <- sBoundsPh2(alpha, alpha0, 
-    t0, t1, tc0, tc1, 
-    rho, iuse0, iuse1h, iuse1t, 
+cvecList1 <- sBoundsPh2(alpha, alpha0,
+    t0, t1, tc0, tc1,
+    rho, iuse0, iuse1h, iuse1t,
     phi0, phi1h, phi1t)
 cvec1 <- cvecList1$bd
-sPwRph2(cvec0, cvec1, 
-    delta0=2, delta1=3, 
-    t0, t1, tc0, tc1, 
-    rho=0) 
+sPwRph2(cvec0, cvec1,
+    delta0=2, delta1=3,
+    t0, t1, tc0, tc1,
+    rho=0)
+}
+\references{
+Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
 }

@@ -1,5 +1,5 @@
 # Rfun_sBoundsPh2
-# This is different from sBndyPhrho or scdryBndyPhrho (2017-12-08) 
+# This is different from sBndyPhrho or scdryBndyPhrho (2017-12-08)
 # 2020-03-04/05
 #
 #' @name sBoundsPh2
@@ -11,7 +11,7 @@
 #' @param t1 a vector of information times for H1
 #' @param tc0 a vector of calendar times for H0
 #' @param tc1 a vector of calendar times for H1
-#' @param rho a value of the correlation between the test statistics for H0 and H1. 
+#' @param rho a value of the correlation between the test statistics for H0 and H1.
 #' @param iuse0 a value of the type of error spending function for H0, ranging from 1 to 4
 #' @param iuse1h a value of the type of error spending function for H1 first half, ranging from 1 to 4
 #' @param iuse1t a value of the type of error spending function for H1 second half, ranging from 1 to 4
@@ -35,9 +35,9 @@
 #' t0 <- c(0.3,0.6,0.9,1)
 #' t1 <- (1:4)/4
 #' rho <- 0
-#' sBoundsPh2(alpha, alpha0, 
-#'     t0, t1, tc0, tc1, 
-#'     rho, iuse0, iuse1h, iuse1t, 
+#' sBoundsPh2(alpha, alpha0,
+#'     t0, t1, tc0, tc1,
+#'     rho, iuse0, iuse1h, iuse1t,
 #'     phi0, phi1h, phi1t)
 #' alpha <-  0.025
 #' alpha0 <- 0.01
@@ -50,12 +50,14 @@
 #' t0 <- (1:5)/5
 #' t1 <- (1:4)/4
 #' rho <- 0.0;
-#' sBoundsPh2(alpha, alpha0, 
-#'     t0, t1, tc0, tc1, 
-#'     rho, iuse0, iuse1h=iuse1, iuse1t=iuse1, 
+#' sBoundsPh2(alpha, alpha0,
+#'     t0, t1, tc0, tc1,
+#'     rho, iuse0, iuse1h=iuse1, iuse1t=iuse1,
 #'     phi0, phi1h=phi1, phi1t=phi1)
 #' @references
-#' Gou, J. (2021). Trigger strategy in repeated tests on multiple hypotheses. Technical report. 
+#'  Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+#'  Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
+#
 #
 sBoundsPh2 <- function(alpha, alpha0, t0, t1, tc0=t0, tc1=t1, rho=0, iuse0=1, iuse1h=1, iuse1t=1, phi0=rep(1,length(alpha)), phi1h=rep(1,length(alpha)), phi1t=rep(1,length(alpha))) {
   # Critical boundaries of H0
@@ -96,11 +98,11 @@ sBoundsPh2 <- function(alpha, alpha0, t0, t1, tc0=t0, tc1=t1, rho=0, iuse0=1, iu
   cvec1t <- cvecList1t$bd
   #
   targetDiff1 <- function(alpha1h, alpha, t1_head, t1_tail, iuse1h, phi1h, cvec1t){
-    cvecList1h <- gbounds(t=t1_head, iuse=iuse1h, alpha = alpha1h, phi=phi1h) 
+    cvecList1h <- gbounds(t=t1_head, iuse=iuse1h, alpha = alpha1h, phi=phi1h)
     cvec1h <- cvecList1h$bd
     cvec1 <- c(cvec1h, cvec1t)
     t1 <- c(t1_head, t1_tail)
-    alphas <- boundary2alpha(cvec=cvec1, t=t1) 
+    alphas <- boundary2alpha(cvec=cvec1, t=t1)
     alpha_calc <- alphas[length(alphas)]
     return(alpha - alpha_calc)
   } # End of Function targetDiff1

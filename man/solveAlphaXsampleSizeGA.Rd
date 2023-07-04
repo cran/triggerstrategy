@@ -125,5 +125,6 @@ result <- solveAlphaXsampleSizeGA(alpha=alpha,
 print(result)
 }
 \references{
-Gou, J. (2021). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. Technical report.
+Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
 }

@@ -9,14 +9,14 @@
 #' @return a vector of critical boundaries
 #' @export
 #' @import stats
-#' @import mvtnorm 
+#' @import mvtnorm
 #' @import ldbounds
 #' @author Jiangtao Gou
-#' @details The current version of \code{ldbounds::bounds} does not work for Hwang-Shih-DeCani boundaries. 
+#' @details The current version of \code{ldbounds::ldBounds} may not work for Hwang-Shih-DeCani boundaries.
 #' @examples
 #' library(ldbounds)
 #' tvec <- c(0.5,1)
-#' result <- ldbounds::bounds(t=tvec, iuse=1, alpha=0.05)
+#' result <- ldbounds::ldBounds(t=tvec, iuse=1, alpha=0.05, sides=1)
 #' print(result$upper.bounds)
 #' bd <- alpha2boundary(alphas = result$exit.pr, t=tvec)
 #' print(bd)

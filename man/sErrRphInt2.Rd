@@ -39,15 +39,21 @@ tc1 <- c(6,12,18,24)
 t0 <- c(0.3,0.6,0.9,1)
 t1 <- (1:4)/4
 rho <- 0
-cvecList0 <- gbounds(t=t0,iuse=iuse0, 
+cvecList0 <- gbounds(t=t0,iuse=iuse0,
     alpha=alpha0,phi=phi0)
 cvec0 <- cvecList0$bd
-cvecList1 <- gbounds(t=t1,iuse=iuse1, 
+cvecList1 <- gbounds(t=t1,iuse=iuse1,
     alpha=alpha1,phi=phi1)
 cvec1 <- cvecList1$bd
-result <- sErrRphInt2(cvec0, cvec1, 
+result <- sErrRphInt2(cvec0, cvec1,
     t0, t1, tc0, tc1, rho)
 print(result)
+}
+\references{
+Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
+Tamhane, A. C., Gou, J., Jennison, C., Mehta, C. R., and Curto, T. (2018). A gatekeeping procedure to test a primary and a secondary endpoint in a group sequential design with multiple interim looks. \emph{Biometrics}, 74(1), 40-48.
+Tamhane, A. C., & Gou, J. (2022). Chapter 2 - Multiple test procedures based on p-values. In X. Cui, T. Dickhaus, Y. Ding, & J. C. Hsu (Eds.), \emph{Handbook of multiple comparisons} (Vol. 45, pp. 11–34).
 }
 \author{
 Jiangtao Gou

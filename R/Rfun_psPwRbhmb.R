@@ -3,7 +3,7 @@
 #
 #' @name psPwRbhmb
 #' @title Powers of testing the primary and secondary hypotheses
-#' @description This function computes the powers of testing the primary and secondary hypotheses using the \code{holm}, \code{maurer-bretz}, \code{bonferroni} methods. 
+#' @description This function computes the powers of testing the primary and secondary hypotheses using the \code{holm}, \code{maurer-bretz}, \code{bonferroni} methods.
 #' @param alpha a number shows the overall error rate
 #' @param alpha0 a number shows the error rate assigned to the primary endpoint initially
 #' @param t0 a vector shows the information times of the primary endpoint
@@ -21,12 +21,12 @@
 #' @param effsz0 a value of effect size for hypothesis H0
 #' @param effsz1 a value of effect size for hypothesis H1
 #' @param method a text of method, including \code{holm}, \code{maurer-bretz}, \code{bonferroni}
-#' @return a vector of two values of the probability that H0 is rejected,  the probability that H1 is rejected, the power, using \code{holm}, \code{maurer-bretz}, or \code{bonferroni}. 
+#' @return a vector of two values of the probability that H0 is rejected,  the probability that H1 is rejected, the power, using \code{holm}, \code{maurer-bretz}, or \code{bonferroni}.
 #' @export
 #' @import stats
 #' @author Jiangtao Gou
 #' @details The methods include \code{holm}, \code{maurer-bretz}, and \code{bonferroni}. Users can decide whether the correlation information is used or not.
-#' @examples 
+#' @examples
 #' alpha <-  0.025
 #' alpha0 <- 0.0136
 #' iuse0 <- 1
@@ -38,23 +38,26 @@
 #' t0 <- c(0.6,1)
 #' t1 <- c(0.5,0.9,1)
 #' rho <- 0
-#' effsz0 <- 0.33 
+#' effsz0 <- 0.33
 #' effsz1 <- 0.30
 #' groupsize=226
 #' szratio=1
 #' method="bonferroni"
 #' method = "holm"
 #' method="maurer-bretz"
-#' psPwRbhmb(alpha=alpha, alpha0=alpha0, 
-#'     t0=t0, t1=t1, tc0=tc0, tc1=tc1, 
-#'     rho=rho, iuse0=1, iuse1=iuse1, 
-#'     phi0=phi0, phi1=phi1, 
-#'     usingRhoForBoundary=usingRhoForBoundary, 
-#'     groupsize=groupsize, szratio=szratio, 
-#'     effsz0=effsz0, effsz1=effsz1, 
-#'     method=method) 
+#' psPwRbhmb(alpha=alpha, alpha0=alpha0,
+#'     t0=t0, t1=t1, tc0=tc0, tc1=tc1,
+#'     rho=rho, iuse0=1, iuse1=iuse1,
+#'     phi0=phi0, phi1=phi1,
+#'     usingRhoForBoundary=usingRhoForBoundary,
+#'     groupsize=groupsize, szratio=szratio,
+#'     effsz0=effsz0, effsz1=effsz1,
+#'     method=method)
 #' @references
-#' Gou, J. (2021). Trigger strategy in repeated tests on multiple hypotheses. Technical report. 
+#'  Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+#'  Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
+#'  Tamhane, A. C., Gou, J., Jennison, C., Mehta, C. R., and Curto, T. (2018). A gatekeeping procedure to test a primary and a secondary endpoint in a group sequential design with multiple interim looks. \emph{Biometrics}, 74(1), 40-48.
+#'  Tamhane, A. C., & Gou, J. (2022). Chapter 2 - Multiple test procedures based on p-values. In X. Cui, T. Dickhaus, Y. Ding, & J. C. Hsu (Eds.), \emph{Handbook of multiple comparisons} (Vol. 45, pp. 11–34).
 #
 psPwRbhmb <- function(alpha, alpha0, t0, t1, tc0=t0, tc1=t1, rho=0, iuse0=1, iuse1=1, phi0=rep(1,length(alpha)), phi1=rep(1,length(alpha)), usingRhoForBoundary=FALSE, groupsize, szratio=1, effsz0, effsz1, method="bonferroni") {
   #
@@ -72,8 +75,8 @@ psPwRbhmb <- function(alpha, alpha0, t0, t1, tc0=t0, tc1=t1, rho=0, iuse0=1, ius
     pspwr[1] <- sPwRholm(alpha=alpha, alpha0=alpha-alpha0, t0=t1, t1=t0, delta0=delta1, delta1=delta0, rho=rho, iuse0=iuse1, iuse1=iuse0, phi0=phi1, phi1=phi0)
     pspwr[2] <- sPwRholm(alpha=alpha, alpha0=alpha0, t0=t0, t1=t1, delta0=delta0, delta1=delta1, rho=rho, iuse0=iuse0, iuse1=iuse1, phi0=phi0, phi1=phi1)
   } else if (method == "maurer-bretz") {
-    pspwr[1] <- sPwRholmye(alpha=alpha, alpha0=alpha-alpha0, t0=t1, t1=t0, tc0=tc1, tc1=tc0, delta0=delta1, delta1=delta0, rho=rho, iuse0=iuse1, iuse1=iuse0, phi0=phi1, phi1=phi0) 
-    pspwr[2] <- sPwRholmye(alpha=alpha, alpha0=alpha0, t0=t0, t1=t1, tc0=tc0, tc1=tc1, delta0=delta0, delta1=delta1, rho=rho, iuse0=1, iuse1=iuse1, phi0=phi0, phi1=phi1) 
+    pspwr[1] <- sPwRholmye(alpha=alpha, alpha0=alpha-alpha0, t0=t1, t1=t0, tc0=tc1, tc1=tc0, delta0=delta1, delta1=delta0, rho=rho, iuse0=iuse1, iuse1=iuse0, phi0=phi1, phi1=phi0)
+    pspwr[2] <- sPwRholmye(alpha=alpha, alpha0=alpha0, t0=t0, t1=t1, tc0=tc0, tc1=tc1, delta0=delta0, delta1=delta1, rho=rho, iuse0=1, iuse1=iuse1, phi0=phi0, phi1=phi1)
   } else {
     stop("Methods include: bonferroni, holm, maurer-bretz.")
   } # End of if method

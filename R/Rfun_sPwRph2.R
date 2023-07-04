@@ -16,7 +16,7 @@
 #' @param rho a value of correlation coefficient between H0 and H1
 #' @return a value of the probability that H1 is rejected, the power
 #' @export
-#' @examples 
+#' @examples
 #' alpha <- 0.05
 #' alpha0 <- 0.03
 #' iuse0 <- 4
@@ -30,23 +30,26 @@
 #' t0 <- c(0.3,0.6,0.9,1)
 #' t1 <- (1:4)/4
 #' rho <- 0
-#' cvecList0 <- gbounds(t=t0, iuse=iuse0, 
+#' cvecList0 <- gbounds(t=t0, iuse=iuse0,
 #'     alpha=alpha0, phi=phi0)
 #' cvec0 <- cvecList0$bd
-#' cvecList1 <- sBoundsPh2(alpha, alpha0, 
-#'     t0, t1, tc0, tc1, 
-#'     rho, iuse0, iuse1h, iuse1t, 
+#' cvecList1 <- sBoundsPh2(alpha, alpha0,
+#'     t0, t1, tc0, tc1,
+#'     rho, iuse0, iuse1h, iuse1t,
 #'     phi0, phi1h, phi1t)
 #' cvec1 <- cvecList1$bd
-#' sPwRph2(cvec0, cvec1, 
-#'     delta0=2, delta1=3, 
-#'     t0, t1, tc0, tc1, 
-#'     rho=0) 
+#' sPwRph2(cvec0, cvec1,
+#'     delta0=2, delta1=3,
+#'     t0, t1, tc0, tc1,
+#'     rho=0)
+#' @references
+#'  Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+#'  Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
 #
 sPwRph2 <- function(cvec0, cvec1, delta0, delta1, t0, t1, tc0=t0, tc1=t1, rho=0) {
   stageK0 <- length(t0)
   stageK1 <- length(t1)
-  pw1max <- marginalPwR(cvec=cvec1, t=t1, delta=delta1) 
+  pw1max <- marginalPwR(cvec=cvec1, t=t1, delta=delta1)
   #
   # The index of locations in tc0
   grandstage <- rep(0, times=stageK1)
@@ -54,8 +57,8 @@ sPwRph2 <- function(cvec0, cvec1, delta0, delta1, t0, t1, tc0=t0, tc1=t1, rho=0)
     grandstage[i] <- utils::tail(which( tc0 <= tc1[i]), n=1)
   }
   # Debugging codes
-  # tc0 <-c (3,6,9,12); tc1 <- c(3,4,7,9); stageK1 <- length(t1c); 
-  # tc0 <-c (3,6,9,12); tc1 <- c(6,12,18,24); stageK1 <- length(t1c); 
+  # tc0 <-c (3,6,9,12); tc1 <- c(3,4,7,9); stageK1 <- length(t1c);
+  # tc0 <-c (3,6,9,12); tc1 <- c(6,12,18,24); stageK1 <- length(t1c);
   # print(grandstage)
   #
   # grandstage is jx #

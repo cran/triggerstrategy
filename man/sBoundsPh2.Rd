@@ -67,9 +67,9 @@ tc1 <- c(6,12,18,24)
 t0 <- c(0.3,0.6,0.9,1)
 t1 <- (1:4)/4
 rho <- 0
-sBoundsPh2(alpha, alpha0, 
-    t0, t1, tc0, tc1, 
-    rho, iuse0, iuse1h, iuse1t, 
+sBoundsPh2(alpha, alpha0,
+    t0, t1, tc0, tc1,
+    rho, iuse0, iuse1h, iuse1t,
     phi0, phi1h, phi1t)
 alpha <-  0.025
 alpha0 <- 0.01
@@ -82,13 +82,14 @@ tc1 <- c(6,12,18,36)
 t0 <- (1:5)/5
 t1 <- (1:4)/4
 rho <- 0.0;
-sBoundsPh2(alpha, alpha0, 
-    t0, t1, tc0, tc1, 
-    rho, iuse0, iuse1h=iuse1, iuse1t=iuse1, 
+sBoundsPh2(alpha, alpha0,
+    t0, t1, tc0, tc1,
+    rho, iuse0, iuse1h=iuse1, iuse1t=iuse1,
     phi0, phi1h=phi1, phi1t=phi1)
 }
 \references{
-Gou, J. (2021). Trigger strategy in repeated tests on multiple hypotheses. Technical report.
+Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
 }
 \author{
 Jiangtao Gou

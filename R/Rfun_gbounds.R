@@ -14,6 +14,7 @@
 #' @export
 #' @import stats
 #' @import ldbounds
+#' @import mvtnorm
 #' @author Jiangtao Gou
 #' @details If the original Pocock is implemented, we specify \code{iuse=-2}. If the original OBrien-Flemming is implemented, we specify \code{iuse=-1}.
 #' @examples
@@ -32,7 +33,7 @@ gbounds <- function(t, iuse=1, alpha=0.05, phi=rep(1,length(alpha))) {
     return(result)
   }
   if (iuse == 1 | iuse == 2 | iuse == 3) {
-    ldresult <- ldbounds::bounds(t=t,iuse=iuse,alpha=alpha, phi=phi)
+    ldresult <- ldbounds::ldBounds(t=t, iuse=iuse, alpha=alpha, phi=phi, sides=1)
     bd <- ldresult$upper.bounds
     er <- ldresult$exit.pr
     result <- list(bd=bd, er=er)
@@ -54,10 +55,10 @@ gbounds <- function(t, iuse=1, alpha=0.05, phi=rep(1,length(alpha))) {
       upperB <- c
       meanV <- rep(0,K)
       corrM <- corrMatGenerator(tp=t,ts=vector(mode="numeric",length=0),rhops=1)
-      result <- pmvnorm(lowerB, upperB, meanV, corrM, algorithm=Miwa(steps=128))
+      result <- mvtnorm::pmvnorm(lowerB, upperB, meanV, corrM, algorithm=Miwa(steps=128))
       return(result - 1 + alpha)
     }
-    rootresult <- uniroot(target, lower = qnorm(p=alpha, lower.tail=FALSE), upper = 10, tol = 2.5e-16, t=t, alpha = alpha)
+    rootresult <- stats::uniroot(target, lower = qnorm(p=alpha, lower.tail=FALSE), upper = 10, tol = 2.5e-16, t=t, alpha = alpha)
     bd <- rep(rootresult$root, times=length(t))
     er <- boundary2alpha(cvec=bd, t=t)
     result <- list(bd=bd, er=er)
@@ -70,10 +71,10 @@ gbounds <- function(t, iuse=1, alpha=0.05, phi=rep(1,length(alpha))) {
       upperB <- c/sqrt(t)
       meanV <- rep(0,K)
       corrM <- corrMatGenerator(tp=t,ts=vector(mode="numeric",length=0),rhops=1)
-      result <- pmvnorm(lowerB, upperB, meanV, corrM, algorithm=Miwa(steps=128))
+      result <- mvtnorm::pmvnorm(lowerB, upperB, meanV, corrM, algorithm=Miwa(steps=128))
       return(result - 1 + alpha)
     }
-    rootresult <- uniroot(target, lower = qnorm(p=alpha, lower.tail=FALSE), upper = 10, tol = 2.5e-16, t=t, alpha = alpha)
+    rootresult <- stats::uniroot(target, lower = qnorm(p=alpha, lower.tail=FALSE), upper = 10, tol = 2.5e-16, t=t, alpha = alpha)
     bd <- rootresult$root/sqrt(t)
     er <- boundary2alpha(cvec=bd, t=t)
     result <- list(bd=bd, er=er)

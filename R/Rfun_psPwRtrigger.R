@@ -2,7 +2,7 @@
 #
 #' @name psPwRtrigger
 #' @title Powers of testing the primary and secondary hypotheses using trigger strategy
-#' @description This function computes the powers of testing the primary and secondary hypotheses using trigger strategy. 
+#' @description This function computes the powers of testing the primary and secondary hypotheses using trigger strategy.
 #' @param alpha a number shows the overall error rate
 #' @param alpha0 a number shows the error rate assigned to the primary endpoint initially
 #' @param t0 a vector shows the information times of the primary endpoint
@@ -21,7 +21,7 @@
 #' @param effsz1 a value of effect size for hypothesis H1
 #' @return a vector of two values of the probability that H0 is rejected, and the probability that H1 is rejected, using the trigger strategy
 #' @export
-#' @examples 
+#' @examples
 #' alpha <-  0.0250
 #' alpha0 <- 0.0136
 #' iuse0 <- 1
@@ -37,15 +37,16 @@
 #' effsz1 <- 0.30
 #' groupsize=226
 #' szratio=1
-#' psPwRtrigger(alpha=alpha, alpha0=alpha0, 
-#'     t0=t0, t1=t1, tc0=tc0, tc1=tc1, 
-#'     rho=rho, iuse0=1, iuse1=iuse1, 
-#'     phi0=phi0, phi1=phi1, 
-#'     usingRhoForBoundary=FALSE, 
-#'     groupsize=groupsize, szratio=szratio, 
+#' psPwRtrigger(alpha=alpha, alpha0=alpha0,
+#'     t0=t0, t1=t1, tc0=tc0, tc1=tc1,
+#'     rho=rho, iuse0=1, iuse1=iuse1,
+#'     phi0=phi0, phi1=phi1,
+#'     usingRhoForBoundary=FALSE,
+#'     groupsize=groupsize, szratio=szratio,
 #'     effsz0=effsz0, effsz1=effsz1)
 #' @references
-#' Gou, J. (2021). Trigger strategy in repeated tests on multiple hypotheses. Technical report. 
+#'  Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+#'  Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
 #
 psPwRtrigger <- function (alpha, alpha0, t0, t1, tc0=t0, tc1=t1, rho=0, iuse0=1, iuse1=1, phi0=rep(1,length(alpha)), phi1=rep(1,length(alpha)), usingRhoForBoundary=FALSE, groupsize, szratio=1, effsz0, effsz1) {
   #
@@ -60,7 +61,7 @@ psPwRtrigger <- function (alpha, alpha0, t0, t1, tc0=t0, tc1=t1, rho=0, iuse0=1,
   cvec0 <- cvecList0$bd
   pspwr[1] <- marginalPwR(cvec=cvec0,t=t0,delta=delta0)
   #
-  pspwr[2] <- sPwRtrigger(alpha=alpha, alpha0=alpha0, t0=t0, t1=t1, tc0=tc0, tc1=tc1, delta0=delta0, delta1=delta1, rho=rho, iuse0=iuse0, iuse1=iuse1, phi0=phi0, phi1=phi1, usingRhoForBoundary=usingRhoForBoundary) 
+  pspwr[2] <- sPwRtrigger(alpha=alpha, alpha0=alpha0, t0=t0, t1=t1, tc0=tc0, tc1=tc1, delta0=delta0, delta1=delta1, rho=rho, iuse0=iuse0, iuse1=iuse1, phi0=phi0, phi1=phi1, usingRhoForBoundary=usingRhoForBoundary)
   #
   return (pspwr)
 }#

@@ -76,42 +76,43 @@ effsz1 <- 0.30
 szratio <- 1
 beta0 <- 0.10
 beta1 <- 0.20
-solveAlphaXsampleSize(alpha, beta0, beta1, 
+solveAlphaXsampleSize(alpha, beta0, beta1,
     effsz0, effsz1, szratio)
 # Multi-stage example
-alpha=0.025
-beta0=0.10
-beta1=0.20
-effsz0=0.33
-effsz1=0.30
-szratio=1
-t0=c(0.5,0.9,1)
-t1=c(0.6,1)
-tc0=c(1,2)
-tc1=c(1,2,3)
-rho=0
-iuse0=1
-iuse1=2
-phi0=-4
-phi1=1
-usingRhoForBoundary=FALSE
-myinit=c(300,alpha/2)
-myinit=c(200,alpha/10)
+alpha <- 0.025
+beta0 <- 0.10
+beta1 <- 0.20
+effsz0 <- 0.33
+effsz1 <- 0.30
+szratio <- 1
+t0 <- c(0.5,0.9,1)
+t1 <- c(0.6,1)
+tc0 <- c(1,2)
+tc1 <- c(1,2,3)
+rho <- 0
+iuse0 <- 1
+iuse1 <- 2
+phi0 <- -4
+phi1 <- 1
+usingRhoForBoundary <- FALSE
+myinit <- c(300,alpha/2)
+myinit <- c(200,alpha/10)
 method="trigger"
 method="bonferroni"
 method="holm"
 method="maurer-bretz"
-solveAlphaXsampleSize(alpha=alpha, 
-    beta0=beta0, beta1=beta1, 
-    effsz0=effsz0, effsz1=effsz1, 
-    szratio=szratio, 
-    t0=t0, t1=t1, tc0=tc0, tc1=tc1, 
-    rho=rho, iuse0=iuse0, iuse1=iuse1, 
-    phi0=phi0, phi1=phi1, 
-    usingRhoForBoundary=usingRhoForBoundary, 
-    method=method, 
-    myinit=myinit) 
+solveAlphaXsampleSize(alpha=alpha,
+    beta0=beta0, beta1=beta1,
+    effsz0=effsz0, effsz1=effsz1,
+    szratio=szratio,
+    t0=t0, t1=t1, tc0=tc0, tc1=tc1,
+    rho=rho, iuse0=iuse0, iuse1=iuse1,
+    phi0=phi0, phi1=phi1,
+    usingRhoForBoundary=usingRhoForBoundary,
+    method=method,
+    myinit=myinit)
 }
 \references{
-Gou, J. (2021). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. Technical report.
+Gou, J. (2023). Trigger strategy in repeated tests on multiple hypotheses. \emph{Statistics in Biopharmaceutical Research}, 15(1), 133-140.
+Gou, J. (2022). Sample size optimization and initial allocation of the significance levels in group sequential trials with multiple endpoints. \emph{Biometrical Journal}, 64(2), 301-311.
 }
